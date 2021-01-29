@@ -2,7 +2,6 @@
 
 function dashboardControl($userAction){
     switch ($userAction){
-        // Action a àjouter
         default:
             dashboardControl_defaultAction();
             break;
@@ -11,6 +10,8 @@ function dashboardControl($userAction){
 
 function dashboardControl_defaultAction()
 {
-    $tabTitle="Accueil";
+    $tabTitle="Consultation";
+
     include('../page/dashboardPage_default.php');
-}   
+}
+

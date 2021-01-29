@@ -5,8 +5,8 @@ include('../data/userData.php');
 
 
 include('../control/authenticateControl.php');
-include('../control/availableControl.php');
 include('../control/dashboardControl.php');
+
 session_start();
 
 
@@ -20,18 +20,15 @@ $action='';
 if (isset($_GET['action'])) {
     $action=$_GET['action'];
 }
-//if (!isset($_SESSION['id'])){
-//    $route='authenticate';
-//}
+if (!isset($_SESSION['id'])){
+    $route='authenticate';
+}
 switch($route){
     case "dashboard":
         dashboardControl($action);
     break;
     case "authenticate":
         authenticateControl($action);
-    break;
-    case "available":
-        availableControl($action);
     break;
     default:
         echo("La route spécifiée n'existe pas !");
