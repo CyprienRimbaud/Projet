@@ -10,8 +10,8 @@ function dashboardControl($userAction){
 
 function dashboardControl_defaultAction()
 {
-    $tabTitle="Consultation";
 
+    $tabTitle="Consultation";
+    $userVacationData = vacationData_getAllWithId($_SESSION['id']);
     include('../page/dashboardPage_default.php');
 }
-
