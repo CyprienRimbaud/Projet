@@ -2,7 +2,6 @@
 include('../config/env.php');
 include('../data/Connection.php');
 include('../data/userData.php');
-include('../data/vacationData.php');
 
 
 include('../control/authenticateControl.php');
