@@ -2,11 +2,13 @@
 include('../config/env.php');
 include('../data/Connection.php');
 include('../data/userData.php');
+include('../data/vacationData.php');
 
 
 include('../control/authenticateControl.php');
 include('../control/dashboardControl.php');
 
+include('../page/functions/fct_dates.php');
 session_start();
 
 

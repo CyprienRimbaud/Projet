@@ -9,7 +9,6 @@ include('../page/template/menu.php');  ?>
                 <label for="pwd">Mot de passe </label>
                 <input type="password" name="pwd" placeholder="Saisissez votre mot de passe">
                 <input type="submit" value="Se connecter">
-
         </form>
         <small><?php echo $message ?></small>
 
