@@ -9,6 +9,8 @@ include('../control/authenticateControl.php');
 include('../control/dashboardControl.php');
 
 include('../page/functions/fct_dates.php');
+include('../page/functions/fct_vacation.php');
+
 session_start();
 
 

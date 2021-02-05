@@ -50,7 +50,7 @@ function authenticateControl_loginAction()
             $_SESSION['lastName']=$user[0]['lastName'];
 
 
-                header('location:?route=dashboard&action=store');
+                header('location:?route=dashboard');
         }
         else{
             // On informe l'utilisateur qu'il n'a pas le droit d'accès

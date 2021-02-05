@@ -10,16 +10,9 @@ function vacationData_getVacation(){
     return $result;
 }
 
-function vacationData_getAllWithIdNotTrash($userId){
+function vacationData_getAllWithId($userId){
 
-    $request ='SELECT * FROM `vacation` WHERE user_id="'.$userId.'" AND trashed = 0';
-    $result = Connection::query($request);
-    return $result;
-}
-
-function vacationData_getAllWithIdTrash($userId)
-{
-$request ='SELECT * FROM `vacation` WHERE user_id="'.$userId.'" AND trashed = 1';
+    $request ='SELECT vacation.id, vacation.start, vacation.end, vacation.status,reason.label FROM `vacation` JOIN `reason` ON  reason.id = vacation.reason_id WHERE user_id ='.$userId;
     $result = Connection::query($request);
     return $result;
 }
