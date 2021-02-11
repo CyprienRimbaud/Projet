@@ -31,7 +31,8 @@ function dates_getAllDate($semaine, $annee, $jour){
             return $resultat;
     }
 //Fonction permettant la conversion de la date en format Français vers le format US
-    function availableFunctions_dateFrToUs($formatDataFr){
+
+    function dateFrToUs($formatDataFr){
 
         $formatDataUs = implode('-',array_reverse  (explode('/',$formatDataFr)));
         return $formatDataUs;
