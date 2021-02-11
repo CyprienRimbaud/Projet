@@ -4,13 +4,13 @@ function vacation_getStatusLabel($statusId)
 
     switch ($statusId){
         case '0':
-            return 'En attente';
+            return '<td class ="bg-gradient-warning">En attente</td>';
         case '1':
-            return 'Accepté';
+            return '<td class ="bg-gradient-success">Accepté</td>';
         case '2':
-            return 'Refusé';
+            return '<td class ="bg-gradient-danger">Refusé</td>';
         default:
-            return 'Non renseigné';
+            return '<td class ="bg-gradient-primary">Non renseigné</td>';
     }
 
 }

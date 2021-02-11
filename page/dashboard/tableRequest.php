@@ -13,8 +13,8 @@
         ?>
             <tr>
                 <td>Demande numéro: <?=$userVacationData[$compteur]['id']?></td>
-                <td>Du <?= $userVacationData[$compteur]['start'] ?> au <?=$userVacationData[$compteur]['end']?></td>
-                <td><?= vacation_getStatusLabel($userVacationData[$compteur]['status'])?></td>
+                <td>Du <?= dateUsToFr($userVacationData[$compteur]['start']) ?> au <?=dateUsToFr($userVacationData[$compteur]['end'])?></td>
+                <?php echo vacation_getStatusLabel($userVacationData[$compteur]['status'])?>
                 <td><?= vacation_getReasonLabel($userVacationData[$compteur]['label'])?></td>
                 <td></td>
             </tr>

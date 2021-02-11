@@ -38,3 +38,10 @@ function dates_getAllDate($semaine, $annee, $jour){
         return $formatDataUs;
 
     }
+
+function dateUsToFr($formatDataUs){
+
+    $formatDataFr = implode('/',array_reverse  (explode('-',$formatDataUs)));
+    return $formatDataFr;
+
+}
