@@ -38,29 +38,23 @@ function dashboardControl_storeAction(){
 
 function dashboardControl_responsableAction(){
     $tabTitle = "Menu responsable : ";
-
-    if (isset($_POST['userWanted'])) {
+    $userWanted = 0;
+    if(isset($_POST['userWanted'])){
         $userWanted = $_POST['userWanted'];
-        $userDataVacation = vacationData_getVacationById($userWanted);
-
-    }elseif (!isset($userDataVacation)){
-        $userDataVacation =[];
+    }elseif(isset($_GET['iduser'])){
+        $userWanted = $_GET['iduser'];
     }
 
-
+    $userDataVacation = vacationData_getVacationById($userWanted);
     $userData = userData_getAll();
 
-    include('../page/dashboardPage_responsable.php');
-
-}
-
-function dashboardControl_statusAction(){
     if (isset($_GET['idvacation'])) {
         $idVacation = $_GET['idvacation'];
         $idUser = $_GET['iduser'];
         $status = $_GET['state'];
         vacationData_changeStatusById($idUser,$status,$idVacation);
     }
-    dashboardControl_responsableAction();
-}
 
+    include('../page/dashboardPage_responsable.php');
+
+}
