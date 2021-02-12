@@ -8,6 +8,9 @@ function dashboardControl($userAction){
         case 'responsable':
             dashboardControl_responsableAction();
             break;
+        case 'status':
+            dashboardControl_statusAction();
+            break;
         default:
             dashboardControl_defaultAction();
             break;
@@ -36,22 +39,28 @@ function dashboardControl_storeAction(){
 function dashboardControl_responsableAction(){
     $tabTitle = "Menu responsable : ";
 
+    if (isset($_POST['userWanted'])) {
+        $userWanted = $_POST['userWanted'];
+        $userDataVacation = vacationData_getVacationById($userWanted);
 
-    $userDataVacation = vacationData_getVacationById($_POST['userWanted']);
-    $messageUser = '';
-    if (isset($userDataVacation)) {
-        $messageUser = 'Erreur, selectionnez une personne';
+    }elseif (!isset($userDataVacation)){
+        $userDataVacation =[];
     }
 
+
     $userData = userData_getAll();
+
+    include('../page/dashboardPage_responsable.php');
+
+}
+
+function dashboardControl_statusAction(){
     if (isset($_GET['idvacation'])) {
         $idVacation = $_GET['idvacation'];
         $idUser = $_GET['iduser'];
         $status = $_GET['state'];
         vacationData_changeStatusById($idUser,$status,$idVacation);
     }
-    include('../page/dashboardPage_responsable.php');
-
+    dashboardControl_responsableAction();
 }
-
 

@@ -34,7 +34,6 @@
     <tbody>
     <?php
     $html = '';
-    $html.= '<p>'.$messageUser. '</p>';
     foreach($userDataVacation as $user){
         $html.= '<tr><td>'.$user['vacation_id'].'</td>';
         $html.= '<td>'.$user['lastname'].'</td>';
@@ -43,7 +42,7 @@
         $html.= '<td>'.dateUsToFr($user['end']).'</td>';
         $html.= '<td>'.vacation_getReasonLabel($user['label']).'</td>';
         $html.= vacation_getStatusLabel($user['status']);
-        $html.='<td><div class="btn-group"><a href="?route=dashboard&action=responsable&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=2" class="btn btn-danger" role="button" data-bs-toggle="button">Refusé !</a><a href="?route=dashboard&action=responsable&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=0" class="btn btn-warning" role="button" data-bs-toggle="button">En attente !</a><a href="?route=dashboard&action=responsable&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=1" class="btn btn-success" role="button" data-bs-toggle="button">Valider !</a></div></td></tr>';
+        $html.='<td><div class="btn-group"><a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=2" class="btn btn-danger" role="button" data-bs-toggle="button">Refusé !</a><a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=0" class="btn btn-warning" role="button" data-bs-toggle="button">En attente !</a><a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=1" class="btn btn-success" role="button" data-bs-toggle="button">Valider !</a></div></td></tr>';
     }
     echo $html
     ?>

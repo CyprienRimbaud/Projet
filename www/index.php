@@ -8,6 +8,7 @@ include('../data/reasonData.php');
 
 include('../control/authenticateControl.php');
 include('../control/dashboardControl.php');
+include('../control/settingsControl.php');
 // Fonctions :
 include('../page/functions/fct_dates.php');
 include('../page/functions/fct_vacation.php');
@@ -35,6 +36,9 @@ switch($route){
     break;
     case "authenticate":
         authenticateControl($action);
+    break;
+    case 'settings':
+        settingsControl($action);
     break;
     default:
         echo("La route spécifiée n'existe pas !");
