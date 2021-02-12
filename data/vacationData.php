@@ -1,7 +1,7 @@
 <?php
 
-function vacationData_getVacation(){
-    $request ='SELECT vacation.*, user.lastname, user.firstname,user.id, reason.label FROM `vacation` JOIN user ON user_id = user.id JOIN reason ON reason_id = reason.id';
+function vacationData_getVacationById($userid){
+    $request ='SELECT vacation.*,vacation.id AS vacation_id, user.lastname, user.firstname,user.id, reason.label FROM `vacation` JOIN user ON user_id = user.id JOIN reason ON reason_id = reason.id WHERE user_id ='.$userid;
     try {
         $result = Connection::query($request);
     } catch (Exception $e) {
@@ -26,4 +26,8 @@ function vacationData_insertVacationById($dateStart,$dateEnd,$type)
 
 }
 
+function vacationData_changeStatusById($userId,$newStatus,$idVacation){
+    $request ='UPDATE `vacation` SET `status` = "'.$newStatus.'" WHERE `vacation`.`id` = "'.$idVacation.'" AND user_id = "'.$userId.'"';
 
+    Connection::exec($request);
+}

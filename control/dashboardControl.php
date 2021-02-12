@@ -35,7 +35,23 @@ function dashboardControl_storeAction(){
 
 function dashboardControl_responsableAction(){
     $tabTitle = "Menu responsable : ";
-    $userDataVacation = vacationData_getVacation();
+
+
+    $userDataVacation = vacationData_getVacationById($_POST['userWanted']);
+    $messageUser = '';
+    if (isset($userDataVacation)) {
+        $messageUser = 'Erreur, selectionnez une personne';
+    }
+
+    $userData = userData_getAll();
+    if (isset($_GET['idvacation'])) {
+        $idVacation = $_GET['idvacation'];
+        $idUser = $_GET['iduser'];
+        $status = $_GET['state'];
+        vacationData_changeStatusById($idUser,$status,$idVacation);
+    }
     include('../page/dashboardPage_responsable.php');
 
 }
+
+
