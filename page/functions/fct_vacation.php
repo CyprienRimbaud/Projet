@@ -21,7 +21,7 @@ function vacation_getReasonLabel($reasonId){
         case 'CS':
             return 'Congés sans solde';
         case 'CC':
-            return 'Congés pour événement familial ';
+            return 'Congés pour événements familial ';
         case 'AA':
             return 'Absence autorisée';
         case 'RTT':

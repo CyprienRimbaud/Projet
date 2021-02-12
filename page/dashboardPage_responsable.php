@@ -4,7 +4,7 @@
     Demandes en cour :
 </div>
 <form method="post" action ="?route=dashboard&action=responsable">
-<label>Choisissez la personne voulue</label>
+<label>Paramètres de recherche :</label>
     <select name ="userWanted" select class="form-select" aria-label="Default select example">
         <?php
         $html = '';
@@ -14,8 +14,15 @@
         echo $html;
 
         ?>
-        <input type="submit" value="Valider">
     </select>
+    <select name ="monthWanted" select class="form-select" aria-label="Default select example">
+            <option selected value="allMonth">Tous les mois</option>
+        <?php foreach($month as $oneMonth){ ?>
+            <option value ="<?=$oneMonth?>"> <?=$oneMonth?></option>
+        <?php } ?>
+
+    </select>
+    <input type="submit" value="Valider">
 </form>
 
 <table class="table table-striped table-bordered">
@@ -32,6 +39,7 @@
     </tr>
     </thead>
     <tbody>
+    <p><strong>Vous avez choisi le mois : <?php if(isset($_POST['monthWanted']) and $_POST['monthWanted'] == "allMonth"){ echo " tous"; }elseif(isset($_POST['monthWanted']) and $_POST['monthWanted']){ echo $_POST['monthWanted'];}?></strong></p>
     <?php
     $html = '';
     foreach($userDataVacation as $user){

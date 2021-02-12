@@ -39,13 +39,20 @@ function dashboardControl_storeAction(){
 function dashboardControl_responsableAction(){
     $tabTitle = "Menu responsable : ";
     $userWanted = 0;
+    $monthWanted = "Tous";
+    $month = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
     if(isset($_POST['userWanted'])){
         $userWanted = $_POST['userWanted'];
     }elseif(isset($_GET['iduser'])){
         $userWanted = $_GET['iduser'];
     }
 
-    $userDataVacation = vacationData_getVacationById($userWanted);
+    if(isset($_POST['monthWanted']) and $_POST['monthWanted'] != "allMonth"){
+        $monthWanted = $_POST['monthWanted'];
+        $userDataVacation = vacationData_getVacationByIdAndMonth($userWanted,monthToNumber($monthWanted));
+    }else{
+        $userDataVacation = vacationData_getVacationById($userWanted);
+    }
     $userData = userData_getAll();
 
     if (isset($_GET['idvacation'])) {

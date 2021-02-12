@@ -12,7 +12,7 @@
         for($compteur = 0; $compteur < count($userVacationData);$compteur++){
         ?>
             <tr>
-                <td>Demande numéro: <?=$userVacationData[$compteur]['id']?></td>
+                <td>Demande numéro: <?=$compteur+1?></td>
                 <td>Du <?= dateUsToFr($userVacationData[$compteur]['start']) ?> au <?=dateUsToFr($userVacationData[$compteur]['end'])?></td>
                 <?php echo vacation_getStatusLabel($userVacationData[$compteur]['status'])?>
                 <td><?= vacation_getReasonLabel($userVacationData[$compteur]['label'])?></td>

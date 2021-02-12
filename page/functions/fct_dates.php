@@ -45,3 +45,37 @@ function dateUsToFr($formatDataUs){
     return $formatDataFr;
 
 }
+
+function monthToNumber($month){
+
+    switch($month){
+        case 'Janvier':
+            return "01";
+        case 'Février':
+            return "02";
+        case 'Mars':
+            return "03";
+        case 'Avril':
+            return "04";
+        case 'Mai':
+            return "05";
+        case 'Juin':
+            return "06";
+        case 'Juillet':
+            return "07";
+        case 'Août':
+            return "08";
+        case 'Septembre':
+            return "09";
+        case 'Octobre':
+            return "10";
+        case 'Novembre':
+            return "11";
+        case 'Décembre':
+            return "12";
+        default:
+            return "";
+    }
+
+
+}
