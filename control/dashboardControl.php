@@ -5,6 +5,9 @@ function dashboardControl($userAction){
         case 'store':
             dashboardControl_storeAction();
             break;
+        case 'responsable':
+            dashboardControl_responsableAction();
+            break;
         default:
             dashboardControl_defaultAction();
             break;
@@ -30,3 +33,9 @@ function dashboardControl_storeAction(){
     dashboardControl_defaultAction();
 }
 
+function dashboardControl_responsableAction(){
+    $tabTitle = "Menu responsable : ";
+    $userDataVacation = vacationData_getVacation();
+    include('../page/dashboardPage_responsable.php');
+
+}

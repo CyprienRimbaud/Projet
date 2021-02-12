@@ -7,3 +7,9 @@ function userData_findOneWithCredentials($userLogin,$userPwd){
     $result=Connection::safeQuery($request,$requestParams);
     return $result;
 }
+
+function userData_getAll(){
+    $request = 'SELECT * FROM user';
+    $result = Connection::query($request,[]);
+    return $result;
+}

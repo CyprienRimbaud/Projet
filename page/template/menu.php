@@ -7,6 +7,14 @@
     </a>
 </li>
 <li class="nav-item">
+    <a href="?route=dashboard&action=responsable" class="nav-link">
+        <i class="nav-icon fas fa-table"></i>
+        <p>
+            Menu responsable
+        </p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="?route=settings" class="nav-link">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
@@ -14,6 +22,7 @@
         </p>
     </a>
 </li>
+
 <li class="nav-item">
     <a href="?route=authenticate&action=logout" class="nav-link">
         <i class="nav-icon fas fa-tachometer-alt"></i>

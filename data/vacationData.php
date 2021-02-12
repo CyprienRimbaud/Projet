@@ -1,7 +1,7 @@
 <?php
 
 function vacationData_getVacation(){
-    $request ="SELECT `start`, `end`, `user_id`, `status` FROM `vacation`";
+    $request ='SELECT vacation.*, user.lastname, user.firstname,user.id, reason.label FROM `vacation` JOIN user ON user_id = user.id JOIN reason ON reason_id = reason.id';
     try {
         $result = Connection::query($request);
     } catch (Exception $e) {
