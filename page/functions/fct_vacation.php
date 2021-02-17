@@ -9,6 +9,8 @@ function vacation_getStatusLabel($statusId)
             return '<td class ="bg-gradient-success">Accepté</td>';
         case '2':
             return '<td class ="bg-gradient-danger">Refusé</td>';
+        case '3':
+            return '<td class ="bg-gradient-orange">En cour d\'annulation</td>';
         default:
             return '<td class ="bg-gradient-primary">Non renseigné</td>';
     }

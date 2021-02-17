@@ -11,6 +11,12 @@ function dashboardControl($userAction){
         case 'status':
             dashboardControl_statusAction();
             break;
+        case 'cancel':
+            dashboardControl_cancelAction();
+            break;
+        case 'delete':
+            dashboardControl_deleteAction();
+            break;
         default:
             dashboardControl_defaultAction();
             break;
@@ -21,8 +27,13 @@ function dashboardControl_defaultAction()
 {
 
     $tabTitle="Mes demandes en cours :";
-    $userVacationData = vacationData_getAllWithId($_SESSION['id']);
-
+    $userVacationData = vacationData_getVacationById($_SESSION['id']);
+    if(isset($_GET['state'])){
+        $idVacation = $_GET['idvacation'];
+        $idUser = $_GET['iduser'];
+        $status = $_GET['state'];
+        vacationData_changeStatusById($idUser,$status,$idVacation);
+    }
 
     include('../page/dashboardPage_default.php');
 }
@@ -31,7 +42,8 @@ function dashboardControl_storeAction(){
     $dateStart = dateFrToUs($_POST['dateStart']);
     $dateEnd = dateFrToUs($_POST['dateEnd']);
     $typeVacation = (int) $_POST['typeVacation'];
-    vacationData_insertVacationById($dateStart,$dateEnd,$typeVacation);
+    $comments = $_POST['comments'];
+    vacationData_insertVacationById($dateStart,$dateEnd,$typeVacation,$comments);
 
     dashboardControl_defaultAction();
 }
@@ -51,9 +63,19 @@ function dashboardControl_responsableAction(){
         $monthWanted = $_POST['monthWanted'];
         $userDataVacation = vacationData_getVacationByIdAndMonth($userWanted,monthToNumber($monthWanted));
     }else{
+        if(isset($_GET['user'])){
+            $userWanted = $_GET['user'];
+        }
         $userDataVacation = vacationData_getVacationById($userWanted);
     }
     $userData = userData_getAll();
+
+
+    include('../page/dashboardPage_responsable.php');
+
+}
+
+function dashboardControl_statusAction(){
 
     if (isset($_GET['idvacation'])) {
         $idVacation = $_GET['idvacation'];
@@ -62,6 +84,24 @@ function dashboardControl_responsableAction(){
         vacationData_changeStatusById($idUser,$status,$idVacation);
     }
 
-    include('../page/dashboardPage_responsable.php');
+    header('location:?route=dashboard&action=responsable&user='.$idUser);
+}
 
+function dashboardControl_cancelAction(){
+    if(isset($_GET['id'])){
+        $idVacation = $_GET['id'];
+        $idUser = $_SESSION['id'];
+        vacationData_changeStatusById($idUser,3,$idVacation);
+    }
+    header('location:?route=dashboard');
+}
+
+function dashboardControl_deleteAction(){
+    if(isset($_GET['iduser'])){
+        $idVacation = $_GET['idvacation'];
+        $idUser = $_GET['iduser'];
+        vacationData_deleteVacationWithVacationId($idVacation);
+    }
+
+    header('location:?route=dashboard&action=responsable&user='.$idUser);
 }

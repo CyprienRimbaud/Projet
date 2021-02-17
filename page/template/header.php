@@ -46,7 +46,7 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                    <a class="d-block">Bonjour <?= $_SESSION['login'] ?> </a>
+                    <a class="d-block">Bonjour <strong> <?= $_SESSION['login'] ?> </strong></a>
                 </div>
             </div>
 

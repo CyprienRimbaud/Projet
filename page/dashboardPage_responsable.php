@@ -34,24 +34,37 @@
         <th>Début</th>
         <th>Fin</th>
         <th>Raison</th>
+        <th>Commentaire</th>
         <th>Status actuel</th>
         <th>Action</th>
+
     </tr>
     </thead>
     <tbody>
     <p><strong>Vous avez choisi le mois : <?php if(isset($_POST['monthWanted']) and $_POST['monthWanted'] == "allMonth"){ echo " tous"; }elseif(isset($_POST['monthWanted']) and $_POST['monthWanted']){ echo $_POST['monthWanted'];}?></strong></p>
     <?php
     $html = '';
-    foreach($userDataVacation as $user){
-        $html.= '<tr><td>'.$user['vacation_id'].'</td>';
-        $html.= '<td>'.$user['lastname'].'</td>';
-        $html.= '<td>'.$user['firstname'].'</td>';
-        $html.= '<td>'.dateUsToFr($user['start']).'</td>';
-        $html.= '<td>'.dateUsToFr($user['end']).'</td>';
-        $html.= '<td>'.vacation_getReasonLabel($user['label']).'</td>';
-        $html.= vacation_getStatusLabel($user['status']);
-        $html.='<td><div class="btn-group"><a href="?route=dashboard&action=responsable&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=2" class="btn btn-danger" role="button" data-bs-toggle="button">Refusé !</a><a href="?route=dashboard&action=responsable&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=0" class="btn btn-warning" role="button" data-bs-toggle="button">En attente !</a><a href="?route=dashboard&action=responsable&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=1" class="btn btn-success" role="button" data-bs-toggle="button">Valider !</a></div></td></tr>';
+    if(count($userDataVacation)<= 0){
+        echo '<p> Selectionnez un utilisateur </p>';
+    }else{
+        foreach($userDataVacation as $user){
+            $html.= '<tr><td>'.$user['vacation_id'].'</td>';
+            $html.= '<td>'.$user['lastname'].'</td>';
+            $html.= '<td>'.$user['firstname'].'</td>';
+            $html.= '<td>'.dateUsToFr($user['start']).'</td>';
+            $html.= '<td>'.dateUsToFr($user['end']).'</td>';
+            $html.= '<td>'.vacation_getReasonLabel($user['label']).'</td>';
+            $html.='<td>'.$user['comentary'].'</td>';
+            $html.= vacation_getStatusLabel($user['status']);
+            if($user['status'] == 3){
+                $html.='<td><div class="btn-group"><a href="?route=dashboard&action=delete&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'" class="btn bg-orange" role="button" data-bs-toggle="button">Accepter l\'annulation !</a>';
+                $html.='<a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=0" class="btn btn-warning" role="button" data-bs-toggle="button">Ne pas accepter !</a></td>';
+            }else{
+                $html.='<td><div class="btn-group"><a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=2" class="btn btn-danger" role="button" data-bs-toggle="button">Refusé !</a><a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=0" class="btn btn-warning" role="button" data-bs-toggle="button">En attente !</a><a href="?route=dashboard&action=status&idvacation='.$user['vacation_id'].'&iduser='.$user['id'].'&state=1" class="btn btn-success" role="button" data-bs-toggle="button">Valider !</a></div></td></tr>';
+            }
+        }
     }
+
     echo $html;
 
     ?>
@@ -60,7 +73,7 @@
 
     </tbody>
 </table>
-<p>Pour mettre à jour actualisez la page</p>
+
 
 <?php include ('../page/template/footer.php'); ?>
 

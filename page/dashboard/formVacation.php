@@ -19,10 +19,17 @@
                     <option value="5">Jour de réduction du temps de travail</option>
                 </select>
 
+                <div class="form-floating">
+                    <textarea name ="comments" class="form-control" placeholder="Laissez un commentaire ici (non obligatoire)" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Comments</label>
+                </div>
+
                 <input type="submit" value="Valider">
+
             </form>
         </div>
     </div>
+
 </div>
 
 

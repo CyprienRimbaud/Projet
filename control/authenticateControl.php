@@ -46,8 +46,8 @@ function authenticateControl_loginAction()
             $_SESSION['id']=$user[0]['id'];
             $_SESSION['login']=$user[0]['login'];
             $_SESSION['active']=$user[0]['active'];
-            $_SESSION['firstName']=$user[0]['firstName'];
-            $_SESSION['lastName']=$user[0]['lastName'];
+            $_SESSION['firstName']=$user[0]['firstname'];
+            $_SESSION['lastName']=$user[0]['lastname'];
 
 
                 header('location:?route=dashboard');
