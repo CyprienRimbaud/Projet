@@ -1,4 +1,4 @@
-<?php if($_SESSION['reponsable'] == null){?>
+<?php if($_SESSION['responsable'] == null){?>
 <li class="nav-item">
     <a href="?route=dashboard&action=responsable" class="nav-link">
         <i class="nav-icon far fa-user"></i>

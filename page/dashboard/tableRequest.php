@@ -11,6 +11,7 @@
     </thead>
     <tbody>
         <?php
+
         for($compteur = 0; $compteur < count($userVacationData);$compteur++){
         ?>
             <tr>
@@ -27,8 +28,6 @@
     </tbody>
 </table>
 
-
-trash
 
 
 
