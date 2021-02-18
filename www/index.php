@@ -30,6 +30,7 @@ if (isset($_GET['action'])) {
 if (!isset($_SESSION['id'])){
     $route='authenticate';
 }
+
 switch($route){
     case "dashboard":
         dashboardControl($action);

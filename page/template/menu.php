@@ -1,3 +1,4 @@
+<?php if($_SESSION['reponsable'] == null){?>
 <li class="nav-item">
     <a href="?route=dashboard&action=responsable" class="nav-link">
         <i class="nav-icon far fa-user"></i>
@@ -7,6 +8,15 @@
     </a>
 </li>
 <li class="nav-item">
+    <a href="" class="nav-link">
+        <i class="nav-icon fas fa-users"></i>
+        <p>
+            Fiches salariés
+        </p>
+    </a>
+</li>
+<?php }else{ ?>
+<li class="nav-item">
     <a href="?route=dashboard" class="nav-link">
         <i class="nav-icon fas fa-table"></i>
         <p>
@@ -14,16 +24,9 @@
         </p>
     </a>
 </li>
+<?php } ?>
 
 
-<li class="nav-item">
-    <a href="?route=dashboard" class="nav-link">
-        <i class="nav-icon fas fa-users"></i>
-        <p>
-            Fiches salariés
-        </p>
-    </a>
-</li>
 
 <li class="nav-item">
     <a href="?route=settings" class="nav-link">

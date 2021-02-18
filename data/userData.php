@@ -8,8 +8,9 @@ function userData_findOneWithCredentials($userLogin,$userPwd){
     return $result;
 }
 
-function userData_getAll(){
-    $request = 'SELECT * FROM user';
+function userData_getAllWithResponsableId($responsableId){
+    $request = 'SELECT * FROM user WHERE responsable_id='.$responsableId;
     $result = Connection::query($request,[]);
     return $result;
 }
+

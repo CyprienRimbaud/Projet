@@ -28,6 +28,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Connectez vous :</p>
             <?php
+
             if($message!=''){
                 echo $message;
             }

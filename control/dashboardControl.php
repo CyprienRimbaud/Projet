@@ -68,7 +68,8 @@ function dashboardControl_responsableAction(){
         }
         $userDataVacation = vacationData_getVacationById($userWanted);
     }
-    $userData = userData_getAll();
+    $userData = userData_getAllWithResponsableId($_SESSION['id']);
+
 
 
     include('../page/dashboardPage_responsable.php');
